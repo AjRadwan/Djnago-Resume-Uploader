@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Resume
+from django.contrib import messages
 from .forms import ResumeForm
 from django.views import View
  
@@ -13,3 +14,13 @@ class Index(View):
     def get(self, request):
         form = ResumeForm()
         return render(request, 'myapp/index.html', {'form':form})
+    
+    def post(self, request):
+        form = ResumeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save();
+            messages.success(request, "Your From has been submitted")
+            return redirect('myapp/index')
+            
+            
+        

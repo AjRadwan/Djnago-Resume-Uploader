@@ -23,12 +23,7 @@
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Upload Resume</a>
-            </li>
-            
-        
+         
         </ul>
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -38,24 +33,46 @@
     </div>
     </nav>
 
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags}} alert-dismissible fade show text-center" role="alert">
+  <strong> {{ message }}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
 
 <div class="container my-3">
-    <form method="post" action="" enctype="multipart/form-data">
-      {% csrf_token %}
-      {% for fm in form  %}
-       <div class="form-group mb-3"> 
-          {{fm.label_tag}} {{fm}}
-    <small class="text-danger"> {{fm.errors|striptags}} </small>
-       </div>
-     {% endfor %}
+  <div class="row">
 
-     <input type="submit" value="submit" class="btn btn-primary"></button>
-     {% if form.non_field_errors %}
-     {% for error in form.non_field_errors  %}
-     <p class="alert alert-danger my-3">{{ error }}</p>
-     {% endfor %}
-     {% endif %}
-      </form>
+<div class="col-sm-6">
+    <form method="post" action="" enctype="multipart/form-data">
+    <h1 class="text-center">Resume Uploader</h1>
+        {% csrf_token %}
+        {% for fm in form  %}
+         <div class="form-group mb-3"> 
+            {{fm.label_tag}} {{fm}}
+      <small class="text-danger"> {{fm.errors|striptags}} </small>
+         </div>
+       {% endfor %}
+  
+       <input type="submit" value="submit" class="btn btn-primary"></button>
+       {% if form.non_field_errors %}
+       {% for error in form.non_field_errors  %}
+       <p class="alert alert-danger my-3">{{ error }}</p>
+       {% endfor %}
+       {% endif %}
+        </form>
+</div>
+<div class="col-sm-6">
+    <h4 class="text-center"><u>List of candidates</u></h4>
+ </div>
+</div>
+
+
+
+
 </div>
 
     <!-- Optional JavaScript; choose one of the two! -->

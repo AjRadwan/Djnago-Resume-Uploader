@@ -40,6 +40,7 @@ STATE_CHOICE = (
  ('West Bengal','West Bengal'),
 )
 
+ 
 class Resume(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField(auto_now=False, auto_now_add=False)
