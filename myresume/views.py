@@ -24,4 +24,8 @@ class Index(View):
             return redirect('myapp/index.html')
             
             
+class Candidate(View):
+    def get(self, request, pk):
+        candidate = Resume.objects.get(pk=pk)
+        return render(request, 'myapp/candidate.html', {'candidate': candidate})
         

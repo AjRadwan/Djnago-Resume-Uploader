@@ -53,3 +53,6 @@ class Resume(models.Model):
     emaill = models.EmailField()
     jobcity = models.CharField(max_length=100)
     profilel_img = models.ImageField(upload_to='profileimg', blank=True)
+    
+    def __str__(self):
+        return self.name
