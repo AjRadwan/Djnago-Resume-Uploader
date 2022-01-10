@@ -71,6 +71,9 @@
 </div>
 <div class="col-sm-6">
     <h4 class="text-center"><u>List of candidates</u></h4>
+    {% for candidate in candidates %}
+      {{candidate.id}}
+    {% endfor %}
  </div>
 </div>
 
