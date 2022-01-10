@@ -23,7 +23,7 @@ class ResumeForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             'name':forms.TextInput(attrs={'class':'form-control'}),
-            'date':forms.DateInput(attrs={'class':'form-control'}),
+            'date':forms.DateInput(attrs={'class':'form-control', 'id':'datepicker'}),
             'location':forms.TextInput(attrs={'class':'form-control'}),
             'city':forms.TextInput(attrs={'class':'form-control'}),
             'pin':forms.TextInput(attrs={'class':'form-control'}),
